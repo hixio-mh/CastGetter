@@ -11,6 +11,6 @@ namespace CastGetter.Interface
         public string Duration { get; set; }
         public bool AlreadySync { get; set; }
         public bool Downloaded { get; set; }
-        public string Link { get; set; }
+        public Uri LinkToRessource { get; set; }
     }
 }

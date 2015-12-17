@@ -11,7 +11,7 @@ namespace CastGetterTest
         [TestMethod]
         public void TestParsing()
         {
-            ITunesPodcastSource _source = new ITunesPodcastSource();
+            TunesPodcastSource _source = new TunesPodcastSource();
 
             Podcast cast = _source.GetPodcast("http://thepointjax.com/Podcast/podcast.xml");
         }
