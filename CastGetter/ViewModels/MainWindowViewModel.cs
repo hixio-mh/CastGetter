@@ -1,6 +1,7 @@
 ﻿using Caliburn.Micro;
 using CastGetter.Interface;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -8,36 +9,22 @@ namespace CastGetter.ViewModels
 {
     public class MainWindowViewModel : PropertyChangedBase
     {
-        private ObservableCollection<Podcast> _podcasts;
-        private ObservableCollection<Episode> _episodes;
+        
 
-        private readonly IPodcastSource _source;
-
-        public MainWindowViewModel(IPodcastSource source)
+        public MainWindowViewModel(
+            MenuViewModel menuView,PanelViewModel panelView,PodcastViewModel podcastView,ProgressViewModel progressView)
         {
-            _source = source;
-            _podcasts = new ObservableCollection<Podcast>();
-            _episodes = new ObservableCollection<Episode>();
+            MenuView = menuView;
+            PanelView = panelView;
+            PodcastView = podcastView;
+            ProgressView = progressView;
         }
 
-
-
-        #region Properties
-
-        public ObservableCollection<Podcast> PodcastList
-        {
-            get { return _podcasts; }
-            set { _podcasts = value; }
-        }
-
-        public ObservableCollection<Episode> EpisodeList
-        {
-            get { return _episodes; }
-            set { _episodes = value; }
-        }
-
+        #region Views
+        public MenuViewModel MenuView { get;private set; }
+        public PanelViewModel PanelView { get;private set; }
+        public PodcastViewModel PodcastView { get; private set; }
+        public ProgressViewModel ProgressView { get; private set; }
         #endregion
-
-
     }
 }

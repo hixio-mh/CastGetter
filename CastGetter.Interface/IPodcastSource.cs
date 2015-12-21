@@ -12,5 +12,9 @@ namespace CastGetter.Interface
     public interface IPodcastSource
     {
         Podcast GetPodcast(string address);
+        /// <summary>
+        /// Name which describes the source
+        /// </summary>
+        string SourceName { get; }
     }
 }

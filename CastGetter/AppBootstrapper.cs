@@ -25,8 +25,18 @@ namespace CastGetter
             ContainerInstance.RegisterSingleton<IEventAggregator, EventAggregator>();
 
             ContainerInstance.Register<MainWindowViewModel, MainWindowViewModel>();
-            ContainerInstance.Register<IPodcastSource, TunesPodcastSource>();
+            ContainerInstance.Register<MenuViewModel, MenuViewModel>();
+            ContainerInstance.Register<PanelViewModel, PanelViewModel>();
+            ContainerInstance.Register<PodcastViewModel, PodcastViewModel>();
+            ContainerInstance.Register<ProgressViewModel>();
 
+            ContainerInstance.RegisterCollection(typeof(IPodcastSource), new[] {
+            typeof(FakeSource), // implements IValidator<Customer>
+            typeof(TunesPodcastSource), // implements IValidator<Customer>
+            });
+
+            //ContainerInstance.Register<IPodcastSource, TunesPodcastSource>();
+            
             ContainerInstance.Verify();
         }
         protected override void OnStartup(object sender, System.Windows.StartupEventArgs e)

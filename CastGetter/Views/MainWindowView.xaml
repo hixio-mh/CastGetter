@@ -12,102 +12,15 @@
             <RowDefinition Height="60"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Menu Grid.Row="0">
-            <MenuItem Header="Podcasts">
-                <MenuItem Header="Hinzufuegen" Command="{Binding AddCast}"></MenuItem>
-            </MenuItem>
-        </Menu>
-        <DockPanel Grid.Row="1">
-            <ToolBarTray DockPanel.Dock="Top">
-                <ToolBar>
-                    <Button>
-                        <StackPanel Margin="5 5 5 5">
-                            <Path Width="32.5482" Height="25.3071" Stretch="Uniform" UseLayoutRounding="False" Fill="Black" Data="F1 M 20.8105,7.09424L 24.2607,33.1177L 15.9209,29.6714C 14.2021,33.7583 13.251,38.2466 13.251,42.9595C 13.251,61.9429 28.6406,77.3267 47.6201,77.3267C 53.2109,77.3267 58.4854,75.9829 63.1504,73.6147L 69.4775,79.9419C 63.0732,83.7349 55.6025,85.9204 47.6201,85.9204C 23.8936,85.9204 4.6582,66.688 4.6582,42.9595C 4.6582,37.0845 5.84277,31.4888 7.98047,26.3901L 0,23.0913L 20.8105,7.09424 Z M 47.6191,0.000488281C 71.3457,0.000488281 90.5791,19.2368 90.5791,42.9604C 90.5791,47.8813 89.748,52.6089 88.2227,57.0112L 96.0176,60.3472L 75.0029,76.0845L 71.8828,50.0181L 80.2969,53.6187C 81.3936,50.2642 81.9883,46.6821 81.9883,42.9604C 81.9883,23.9771 66.5986,8.59326 47.6191,8.59326C 43.3438,8.59326 39.2559,9.38037 35.4814,10.8052L 28.9404,4.26318C 34.5898,1.53076 40.9238,0.000488281 47.6191,0.000488281 Z "/>
-                            <TextBlock>Update</TextBlock>
-                        </StackPanel>
-                    </Button>
-                    <Button>
-                        <StackPanel Margin="5 5 5 5">
-                            <Path Width="32.5482" Height="25.3071" Stretch="Uniform" Fill="Black" Data="F1 M 107.475,521.172C 107.233,521.364 106.941,521.46 106.647,521.46C 106.354,521.46 106.061,521.364 105.818,521.172C 105.583,520.984 100.023,516.552 96.4619,511.251C 96.1872,510.841 96.1605,510.313 96.3912,509.879C 96.6232,509.445 97.0779,509.173 97.5699,509.173L 102.226,509.173C 102.713,506.261 103.639,502.865 103.977,502.388C 104.471,501.685 105.303,501.207 106.642,501.207C 107.981,501.207 108.813,501.685 109.309,502.388C 109.645,502.865 110.571,506.261 111.059,509.173L 115.723,509.173C 116.215,509.173 116.67,509.445 116.902,509.879C 117.134,510.313 117.106,510.841 116.831,511.251C 113.27,516.552 107.711,520.984 107.475,521.172 Z M 122.067,505.744C 122.226,504.961 122.31,504.153 122.31,503.324C 122.31,496.62 117.271,490.787 110.562,490.787C 106.181,490.787 101.95,493.513 99.8139,496.989C 99.4499,496.937 99.0832,496.903 98.7045,496.903C 94.3712,496.903 90.8645,500.408 90.8645,504.737C 90.8645,505.129 90.9019,505.511 90.9579,505.888C 88.2992,508.164 86.6672,511.443 86.6672,514.619C 86.6659,519.897 91.3219,525.489 97.2619,526.224C 103.47,526.813 109.719,526.813 115.926,526.224C 121.869,525.488 126.642,519.896 126.641,514.617C 126.641,511.377 124.823,508.025 122.067,505.744 Z " UseLayoutRounding="False"/>
-                            <TextBlock>Download</TextBlock>
-                        </StackPanel>
-                    </Button>
-                    <Button>
-                        <StackPanel Margin="5 5 5 5">
-                            <Path Width="32.5482" Height="25.3071" Stretch="Uniform" Fill="Black" Data="F1 M 24.4815,12.6728L 9.98462,19.9692L 9.98462,5.37634L 24.4815,12.6728 Z M 3.02417,0C 1.03207,-0.119995 0.0240173,0.888062 0,3.0242L 0,22.2734C 0.0240173,24.2895 1.03207,25.2975 3.02417,25.2975L 29.4738,25.2975C 31.5779,25.2975 32.602,24.2895 32.546,22.2734L 32.546,3.0242C 32.602,0.960083 31.5779,-0.0480042 29.4738,0L 3.02417,0 Z "/>
-                            <TextBlock>Wiedergabe</TextBlock>
-                        </StackPanel>
-                    </Button>
-                </ToolBar>
-                <ToolBar>
-                    <Button>
-                        <StackPanel Margin="5 5 5 5">
-                            <Path Width="32.5482" Height="25.3071" Stretch="Uniform" Fill="Black" Data="F1 M 82.4315,51.1598L 80.1408,52.5264L 77.1528,51.1877L 77.0808,47.7705L 80.0862,46.1555L 82.7595,47.7344M 88.1928,17.3756L 86.0488,16.5211C 86.0488,16.5211 86.5395,8.97168 84.1075,7.6731C 84.1075,7.6731 83.5422,7.14648 82.4422,7.52759L 80.5728,15.2838L 77.0422,14.3678L 78.9222,7.14905C 78.9222,7.14905 79.1662,5.61841 76.8702,6.20239C 76.8702,6.20239 70.0688,7.77441 69.3795,14.5182C 69.3795,14.5182 68.9115,18.6555 74.8395,23.8342C 74.8395,23.8342 76.4155,24.0703 76.2502,29.2795L 75.2368,51.3811C 75.2368,51.3811 76.2315,54.8596 80.7595,54.8596C 80.7595,54.8596 84.5355,54.2463 84.6595,51.373L 84.2235,26.3411C 84.2235,26.3411 89.1422,22.9209 89.8942,19.2262C 89.8942,19.2262 90.5155,17.9583 88.1928,17.3756 Z " UseLayoutRounding="False"/>
-                            <TextBlock>Einstellungen</TextBlock>
-                        </StackPanel>
-                    </Button>
-                    <Button>
-                        <StackPanel Margin="5 5 5 5">
-                            <Path Width="32.5482" Height="25.3071" Stretch="Uniform" UseLayoutRounding="False" Fill="Black" Data="F1 M 65.9326,51.4248C 65.6338,54.041 64.0215,56.0049 62.3359,55.8105C 60.6504,55.6162 59.5254,53.3369 59.8281,50.7227C 60.1289,48.1064 61.7393,46.1426 63.4277,46.3369C 65.1123,46.5322 66.2354,48.8096 65.9326,51.4248 Z M 35.5615,0L 95.5615,0.0107422L 54.9121,13.5615L 54.9121,96L 35.5615,96L 35.5615,66.6729L 53.2178,51L 35.5615,35.3271L 35.5615,0 Z M 41.5625,51.166L 23.8955,65.999L 23.8955,56.9873L 0,56.999L 0.00585938,44.999L 23.8955,44.9873L 23.8955,35.999L 41.5625,51.166 Z "/>
-                            <TextBlock>Beenden</TextBlock>
-                        </StackPanel>
-                    </Button>
-                </ToolBar>
-            </ToolBarTray>
-            <TextBox AcceptsReturn="True" />
-        </DockPanel>
+        <ContentControl Name="MenuView" Grid.Row="0"/>
+        <ContentControl Name="PanelView" Grid.Row="1"></ContentControl>
         <TabControl Grid.Row="2">
             <TabItem Header="Podcasts">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="200"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <GridSplitter Grid.Column="0"></GridSplitter>
-                    <ListView Margin="10" Name="lvPodcasts" Grid.Column="0" ItemsSource="{Binding PodcastList}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="30"></ColumnDefinition>
-                                        <ColumnDefinition></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-                                    <Image Source="C:\Users\rubik\Pictures\test.jpg" Grid.Column="0"></Image>
-                                    <StackPanel Grid.Column="1">
-                                        <TextBlock Text="{Binding Name}" FontWeight="Bold" />
-                                        <TextBlock Text="{Binding Description}"  />
-                                    </StackPanel>
-                                </Grid>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-
-                    </ListView>
-                    <ListView Margin="10" Name="lvEpisodes" Grid.Column="1" ItemsSource="{Binding EpisodeList}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="30"></ColumnDefinition>
-                                        <ColumnDefinition Width="30"></ColumnDefinition>
-                                        <ColumnDefinition Width="100*"></ColumnDefinition>
-                                        <ColumnDefinition Width="50"></ColumnDefinition>
-                                        <ColumnDefinition Width="50"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-                                    <Path Grid.Column="0" Width="24.045" Height="20.25" Stretch="Uniform" UseLayoutRounding="False" Fill="Black" Data="F1 M 0.0449829,15.1875C 0.0149536,15.0375 0,14.89 0,14.745C 0,14.1801 0.272522,13.7475 0.817444,13.4475L 4.66504,10.8975L 7.00494,10.8975L 2.92493,14.01L 7.14752,14.01C 7.27252,14.01 7.36499,14.0575 7.42493,14.1525L 8.4375,16.89L 15.6075,16.89L 16.6124,14.1525C 16.6475,14.0575 16.7425,14.01 16.8975,14.01L 21.1124,14.01L 17.04,10.8975L 19.3799,10.8975L 23.2275,13.4475C 23.7725,13.7625 24.045,14.195 24.045,14.745C 24.045,14.89 24.03,15.0375 24,15.1875L 23.3174,19.05C 23.2574,19.375 23.075,19.6563 22.77,19.8938C 22.465,20.1313 22.155,20.25 21.84,20.25L 2.25,20.25C 1.93494,20.25 1.625,20.1363 1.31995,19.9088C 1.01495,19.6813 0.817444,19.395 0.727539,19.05L 0.0449829,15.1875 Z M 5.57996,5.90253L 9.16504,5.90253L 9.16504,3.05176e-005L 14.9249,3.05176e-005L 14.9249,5.90253L 18.5175,5.90253L 12.045,12L 5.57996,5.90253 Z "/>
-                                    <Path Grid.Column="1" Width="24.045" Height="20.25" Stretch="Uniform" Fill="Black" Data="F1 M 40,86.6666C 45.155,86.6666 49.3333,90.845 49.3333,95.9999C 49.3333,101.155 45.155,105.333 40,105.333C 34.8451,105.333 30.6667,101.155 30.6667,95.9999C 30.6667,90.845 34.8451,86.6666 40,86.6666 Z M 70.6667,-3.05176e-005C 75.8216,-3.05176e-005 80,4.17838 80,9.33331L 80,124C 80,129.155 75.8216,133.333 70.6667,133.333L 9.33334,133.333C 4.17838,133.333 0,129.155 0,124L 0,9.33331C 0,4.17838 4.17838,-3.05176e-005 9.33334,-3.05176e-005L 70.6667,-3.05176e-005 Z M 40,121.333C 53.9922,121.333 65.3333,109.992 65.3333,96C 65.3333,82.0078 53.9922,70.6666 40,70.6666C 26.0091,70.6666 14.6667,82.0078 14.6667,96C 14.6667,109.992 26.0091,121.333 40,121.333 Z M 72,57.3333L 72,9.33331C 72,8.5976 71.4024,7.99997 70.6667,7.99997L 9.33334,7.99997C 8.59763,7.99997 8,8.5976 8,9.33331L 8,57.3333C 8,58.069 8.59763,58.6666 9.33334,58.6666L 70.6667,58.6666C 71.4024,58.6666 72,58.069 72,57.3333 Z "/>
-                                    <StackPanel Grid.Column="2">
-                                        <TextBlock Text="{Binding Name}" FontWeight="Bold" />
-                                        <TextBlock Text="{Binding Description}"  />
-                                    </StackPanel>
-                                    <TextBlock Text="{Binding Duration}" Grid.Column="3"></TextBlock>
-                                    <TextBlock Text="{Binding Date}" Grid.Column="4"></TextBlock>
-                                </Grid>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </Grid>
+                <ContentControl Name="PodcastView"></ContentControl>
             </TabItem>
-            <TabItem Header="Fortschritt"></TabItem>
+            <TabItem Header="Fortschritt">
+                <ContentControl Name="ProgressView"></ContentControl>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

@@ -9,6 +9,15 @@ namespace CastGetterLib
 {
     public class TunesPodcastSource : IPodcastSource
     {
+        private string _name = "ITunes Podcasts";
+        public string SourceName
+        {
+            get
+            {
+                return _name;
+            }
+        }
+
         public Podcast GetPodcast(string address)
         {
             Podcast pcast = new Podcast();
@@ -58,6 +67,11 @@ namespace CastGetterLib
             }
 
             return pcast;
+        }
+
+        public override string ToString()
+        {
+            return _name;
         }
     }
 }
