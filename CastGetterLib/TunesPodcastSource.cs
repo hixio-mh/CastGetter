@@ -36,9 +36,10 @@ namespace CastGetterLib
 
                 pcast.Description = summary;
                 pcast.Name = title;
-                byte[] imgData = client.DownloadData(imgPath);
-                MemoryStream mStream = new MemoryStream(imgData);
-                pcast.Image = Image.FromStream(mStream);
+                //byte[] imgData = client.DownloadData(imgPath);
+                //MemoryStream mStream = new MemoryStream(imgData);
+                //pcast.ImagePath = Image.FromStream(mStream);
+                pcast.ImagePath = new Uri(imgPath);
                 //Leave foreach loop because we are ready
                 break;
             }
@@ -47,8 +48,20 @@ namespace CastGetterLib
             foreach (var item in xml.Descendants("item"))
             {
                 var title = item.Element("title").Value;
-                var summary = item.Element(ns + "summary").Value;
-                var author = item.Element(ns + "author").Value;
+                String summary = "";
+                if (item.Element(ns + "summary") != null)
+                {
+                    summary = item.Element(ns + "summary").Value;
+                }
+                else
+                {
+                    summary = "No Summary";
+                }
+                string author = "";
+                if (item.Element(ns + "author") != null)
+                {
+                    author = item.Element(ns + "author").Value;
+                }
                 var duration = item.Element(ns + "duration").Value;
                 var pubDate = item.Element("pubDate").Value;
 

@@ -1,10 +1,6 @@
 ﻿using CastGetter.Interface;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CastGetterLib
 {
@@ -51,7 +47,7 @@ namespace CastGetterLib
                 Description = "Eine Fake Podcast den es nicht gibt",
                 Name = "Der FakeCast",
                 Episodes = new List<Episode>() { ep1, ep2 },
-                Image = new Bitmap(@"C:\Users\rubik\Pictures\Crocs Cave\Vogel\Ei.png")
+                ImagePath = new Uri(@"C:\Users\rubik\Pictures\Crocs Cave\Vogel\Ei.png")
             };
 
             return pcast;

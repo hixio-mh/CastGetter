@@ -17,6 +17,6 @@ namespace CastGetter.Interface
         public string Name { get; set; }
         public string Description { get; set; }
         public List<Episode> Episodes { get; set; }
-        public Image Image { get; set; }
+        public Uri ImagePath { get; set; }
     }
 }

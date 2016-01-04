@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using CastGetter.Interface;
+using CastGetter.Services;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
@@ -8,9 +9,12 @@ namespace CastGetter.ViewModels
     public class ChooseSourceViewModel : Screen
     {
         IEventAggregator _eventAggregator;
-        public ChooseSourceViewModel(IEnumerable<IPodcastSource> list,IEventAggregator eventAggregator)
+        IDataStorage _storage;
+        
+        public ChooseSourceViewModel(IEnumerable<IPodcastSource> list,IEventAggregator eventAggregator,IDataStorage storage)
         {
             _eventAggregator = eventAggregator;
+            _storage = storage;
             Sources = new ObservableCollection<IPodcastSource>();
 
             foreach (var source in list)
@@ -26,7 +30,9 @@ namespace CastGetter.ViewModels
 
         public void AddCast()
         {
-            _eventAggregator.PublishOnUIThread(SelectedSource.GetPodcast(PodcastAddress));
+            Podcast retrievedCast = SelectedSource.GetPodcast(PodcastAddress);
+            _storage.SaveCast(retrievedCast);
+            _eventAggregator.PublishOnUIThread(retrievedCast);
             TryClose();
         }
 

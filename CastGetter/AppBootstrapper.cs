@@ -8,6 +8,7 @@ using System.Linq;
 using System.Reflection;
 using CastGetter.Interface;
 using CastGetterLib;
+using CastGetter.Services;
 
 namespace CastGetter
 {
@@ -35,7 +36,7 @@ namespace CastGetter
             typeof(TunesPodcastSource), // implements IValidator<Customer>
             });
 
-            //ContainerInstance.Register<IPodcastSource, TunesPodcastSource>();
+            ContainerInstance.Register<IDataStorage, JSONDataStorage>();
             
             ContainerInstance.Verify();
         }
