@@ -36,10 +36,15 @@ namespace CastGetterLib
 
                 pcast.Description = summary;
                 pcast.Name = title;
-                //byte[] imgData = client.DownloadData(imgPath);
-                //MemoryStream mStream = new MemoryStream(imgData);
-                //pcast.ImagePath = Image.FromStream(mStream);
-                pcast.ImagePath = new Uri(imgPath);
+                byte[] imgData = client.DownloadData(imgPath);
+                string ext = Path.GetExtension(imgPath);
+                string filename = Guid.NewGuid().ToString() + ext;
+                using (MemoryStream mStream = new MemoryStream(imgData))
+                {
+                    Image img = Bitmap.FromStream(mStream);
+                    img.Save(filename);
+                }
+                pcast.ImagePath = new Uri(Path.GetFullPath(filename));
                 //Leave foreach loop because we are ready
                 break;
             }

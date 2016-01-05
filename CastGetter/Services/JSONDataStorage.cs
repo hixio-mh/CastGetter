@@ -58,6 +58,7 @@ namespace CastGetter.Services
             {
                 _cache = new List<Podcast>();
             }
+            
             _cache.Add(p);
             using (TextWriter _writer = new StreamWriter(FILENAME))
             {
