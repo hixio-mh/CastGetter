@@ -30,19 +30,26 @@ namespace CastGetter.ViewModels
 
         #region Commands
 
-        public void DownloadButton()
+        public void DownloadButton(Episode episode)
         {
-            if (client == null)
+            _events.PublishOnUIThread(new DownloadEpisode(episode.LinkToRessource)
             {
-                client = new WebClient();
-            }
-            var hasExtension = Path.HasExtension(SelectedEpisode.LinkToRessource.AbsolutePath);
-            if (hasExtension)
-            {
-                string filePath = CleanFileName(SelectedPodcast.Name);
+                EpisodeName = episode.Name,
+                FileName = "test.mp3",
+                Progress = 0
+            });
+            //if (client == null)
+            //{
+            //    client = new WebClient();
+            //}
+            //var hasExtension = Path.HasExtension(SelectedEpisode.LinkToRessource.AbsolutePath);
+            //if (hasExtension)
+            //{
+            //    string filePath = CleanFileName(SelectedPodcast.Name);
                 
-                client.DownloadFile(SelectedEpisode.LinkToRessource, filePath);
-            }
+            //    client.DownloadFile(SelectedEpisode.LinkToRessource, filePath);
+            //}
+            
         }
 
         #endregion

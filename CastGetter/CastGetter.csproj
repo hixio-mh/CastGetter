@@ -80,6 +80,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AppBootstrapper.cs" />
+    <Compile Include="Models\DownloadEpisode.cs" />
     <Compile Include="Services\IDataStorage.cs" />
     <Compile Include="Services\JSONDataStorage.cs" />
     <Compile Include="ViewModels\ChooseSourceViewModel.cs" />
