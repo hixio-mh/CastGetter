@@ -7,6 +7,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 using CastGetter.Interface;
+using CastGetter.Interfaces;
 using CastGetterLib;
 using CastGetter.Services;
 
@@ -29,7 +30,6 @@ namespace CastGetter
             ContainerInstance.Register<MenuViewModel, MenuViewModel>();
             ContainerInstance.Register<PanelViewModel, PanelViewModel>();
             ContainerInstance.Register<PodcastViewModel, PodcastViewModel>();
-            ContainerInstance.Register<ProgressViewModel>();
 
             ContainerInstance.RegisterCollection(typeof(IPodcastSource), new[] {
             typeof(FakeSource), // implements IValidator<Customer>

@@ -1,27 +1,25 @@
-﻿using Caliburn.Micro;
-using CastGetter.Interface;
+﻿using System;
+using Caliburn.Micro;
+using CastGetter.Interfaces;
+using CastGetter.Messages;
 using CastGetter.Services;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Windows.Input;
 
 namespace CastGetter.ViewModels
 {
-    public class MainWindowViewModel : PropertyChangedBase
+    public class MainWindowViewModel : Conductor<object>,IHandle<OpenDetailViewMessage>
     {
-        IEventAggregator _eventAggregator;
+        private readonly IEventAggregator _eventAggregator;
+        private DetailViewModel _detailViewModel;
 
         public MainWindowViewModel(
-            MenuViewModel menuView,PanelViewModel panelView,PodcastViewModel podcastView,ProgressViewModel progressView,
-            IDataStorage storage,IEventAggregator eventAggregator)
+            PodcastViewModel podcastView,IDataStorage storage,IEventAggregator eventAggregator, DetailViewModel detailViewModel)
         {
-            MenuView = menuView;
-            PanelView = panelView;
-            PodcastView = podcastView;
-            ProgressView = progressView;
-
+            _detailViewModel = detailViewModel;
+            //Set Title
+            base.DisplayName = "CastGetter - Enjoy podcasts the easy way :-)";
             _eventAggregator = eventAggregator;
+            //Set currentView
+            ActivateItem(podcastView);
             //Get data from data storage
             var casts = storage.GetAllCasts();
             //if data storage contain podcasts populate Views -> with Data
@@ -32,13 +30,26 @@ namespace CastGetter.ViewModels
                     _eventAggregator.BeginPublishOnUIThread(cast);
                 }
             }
+            _eventAggregator.Subscribe(this);
         }
 
-        #region Views
-        public MenuViewModel MenuView { get;private set; }
-        public PanelViewModel PanelView { get;private set; }
-        public PodcastViewModel PodcastView { get; private set; }
-        public ProgressViewModel ProgressView { get; private set; }
-        #endregion
+        public sealed override void ActivateItem(object item)
+        {
+            base.ActivateItem(item);
+        }
+
+        public void OpenDetailView()
+        {
+            if (_detailViewModel != null)
+            {
+                ActivateItem(_detailViewModel); 
+            }
+        }
+
+        public void Handle(OpenDetailViewMessage message)
+        {
+            OpenDetailView();
+            _eventAggregator.PublishOnUIThread(new SelectedPodcastMessage() {Podcast = message.SelectedPodcast});
+        }
     }
 }

@@ -5,22 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CastGetter"
         mc:Ignorable="d"
-        Title="CastGetter" Height="350" Width="525">
+        Title="CastGetter" Height="350" Width="525"
+        Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}" 
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="20"></RowDefinition>
-            <RowDefinition Height="60"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <ContentControl Name="MenuView" Grid.Row="0"/>
-        <ContentControl Name="PanelView" Grid.Row="1"></ContentControl>
-        <TabControl Grid.Row="2">
-            <TabItem Header="Podcasts">
-                <ContentControl Name="PodcastView"></ContentControl>
-            </TabItem>
-            <TabItem Header="Fortschritt">
-                <ContentControl Name="ProgressView"></ContentControl>
-            </TabItem>
-        </TabControl>
+        <ContentControl Name="ActiveItem"></ContentControl>
     </Grid>
 </Window>

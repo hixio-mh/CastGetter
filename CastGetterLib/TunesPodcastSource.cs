@@ -80,7 +80,8 @@ namespace CastGetterLib
                     Description = summary,
                     Duration = duration,
                     LinkToRessource = fileUri,
-                    AlreadySync = false
+                    IsSync = false,
+                    NotDownloaded = true
                 });
             }
 

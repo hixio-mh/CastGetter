@@ -24,8 +24,8 @@ namespace CastGetterLib
                 Date = DateTime.Now,
                 Description = "Die erste Folge",
                 Duration = "kurz",
-                Downloaded = false,
-                AlreadySync = false,
+                NotDownloaded = false,
+                IsSync = false,
                 LinkToRessource = new Uri("http://www.contoso.com/ep1.mp3"),
                 Name = "Episode 1"
             };
@@ -36,8 +36,8 @@ namespace CastGetterLib
                 Date = DateTime.Now,
                 Description = "Die zweite Folge",
                 Duration = "02:01:00",
-                Downloaded = false,
-                AlreadySync = false,
+                NotDownloaded = false,
+                IsSync = false,
                 LinkToRessource = new Uri("http://www.contoso.com/ep2.mp3"),
                 Name = "Episode 2"
             };

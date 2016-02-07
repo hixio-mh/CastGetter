@@ -6,6 +6,8 @@ using System.Windows.Media;
 using System.Net;
 using System.IO;
 using System.Linq;
+using CastGetter.Interfaces;
+using CastGetter.Messages;
 
 namespace CastGetter.ViewModels
 {
@@ -19,6 +21,7 @@ namespace CastGetter.ViewModels
 
         private WebClient client;
 
+
         public PodcastViewModel(IEventAggregator events)
         {
             _podcasts = new ObservableCollection<Podcast>();
@@ -30,26 +33,9 @@ namespace CastGetter.ViewModels
 
         #region Commands
 
-        public void DownloadButton(Episode episode)
+        public void SelectedChanged()
         {
-            _events.PublishOnUIThread(new DownloadEpisode(episode.LinkToRessource)
-            {
-                EpisodeName = episode.Name,
-                FileName = "test.mp3",
-                Progress = 0
-            });
-            //if (client == null)
-            //{
-            //    client = new WebClient();
-            //}
-            //var hasExtension = Path.HasExtension(SelectedEpisode.LinkToRessource.AbsolutePath);
-            //if (hasExtension)
-            //{
-            //    string filePath = CleanFileName(SelectedPodcast.Name);
-                
-            //    client.DownloadFile(SelectedEpisode.LinkToRessource, filePath);
-            //}
-            
+            _events.PublishOnUIThread(new OpenDetailViewMessage() {SelectedPodcast = SelectedPodcast});
         }
 
         #endregion
@@ -76,24 +62,15 @@ namespace CastGetter.ViewModels
             }
         }
 
-        private Episode _SelectedEpisode;
-
-        public Episode SelectedEpisode
-        {
-            get { return _SelectedEpisode; }
-            set {
-                _SelectedEpisode = value;
-                NotifyOfPropertyChange();
-            }
-        }
-
-
 
         public ObservableCollection<Podcast> PodcastList
         {
             get { return _podcasts; }
             set { _podcasts = value; }
         }
+        #endregion
+
+        #region Events
 
         public void Handle(Podcast message)
         {
@@ -103,13 +80,6 @@ namespace CastGetter.ViewModels
 
         #endregion
 
-        #region Helper
-
-        private static string CleanFileName(string fileName)
-        {
-            return Path.GetInvalidFileNameChars().Aggregate(fileName, (current, c) => current.Replace(c.ToString(), string.Empty));
-        }
-
-        #endregion
+        
     }
 }
